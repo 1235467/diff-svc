@@ -302,20 +302,20 @@ class LatestModelCheckpoint(ModelCheckpoint):
         self.task = None
         if mode == 'min':
             self.monitor_op = np.less
-            self.best = np.Inf
+            self.best = np.inf
             self.mode = 'min'
         elif mode == 'max':
             self.monitor_op = np.greater
-            self.best = -np.Inf
+            self.best = -np.inf
             self.mode = 'max'
         else:
             if 'acc' in self.monitor or self.monitor.startswith('fmeasure'):
                 self.monitor_op = np.greater
-                self.best = -np.Inf
+                self.best = -np.inf
                 self.mode = 'max'
             else:
                 self.monitor_op = np.less
-                self.best = np.Inf
+                self.best = np.inf
                 self.mode = 'min'
         if os.path.exists(f'{self.filepath}/best_valid.npy'):
             self.best = np.load(f'{self.filepath}/best_valid.npy')[0]
