@@ -30,7 +30,7 @@ def voice_change_model():
     # 模型推理
     _f0_tst, _f0_pred, _audio = model.infer(input_wav_path, key=f_pitch_change, acc=accelerate, use_pe=False,
                                             use_crepe=False)
-    tar_audio = librosa.resample(_audio, hparams["audio_sample_rate"], daw_sample)
+    tar_audio = librosa.resample(_audio, orig_sr=hparams["audio_sample_rate"], target_sr=daw_sample)
     # 返回音频
     out_wav_path = io.BytesIO()
     soundfile.write(out_wav_path, tar_audio, daw_sample, format="wav")

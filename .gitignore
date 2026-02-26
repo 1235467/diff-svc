@@ -17,4 +17,6 @@ Winpython64-3.8.10.0dot.exe
 *.wav
 *.json
 *.flac
-*.xmp
+*.xmp# pixi environments
+.pixi/*
+!.pixi/config.toml
